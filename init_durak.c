@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "init_durak.h"
+#include "game_settings.h"
 
 
 
@@ -110,12 +111,13 @@ void randomize ( struct Card_properties *arr, int n )
     }
  }
 
-void cards2hand(struct Card_properties *deck, struct Player *player) {
+
+ void cards2hand(struct Card_properties *deck, struct Player *player) {
 
 	int i, k;
 	
 	
-		for (i=0,k=0;i < MAX_HAND; i++, k++)
+		for (i=zero_pos(*player),k=0;i < MAX_HAND; i++, k++)
 		{
 			if (deck[k].value == 0 && deck[k].suits == 0)
 			{
@@ -123,16 +125,21 @@ void cards2hand(struct Card_properties *deck, struct Player *player) {
 				i--;
 				continue;
 			}
+
+			if (player->hand[i].value == 0 && player->hand[i].suits == 0 )
+			{
+				player->hand[i].value = deck[k].value;
+				player->hand[i].suits = deck[k].suits;
+
+				deck[k].value = EMPTY_FIELD;
+				deck[k].suits = EMPTY_FIELD;
+			}
 			
-			player->hand[i].value = deck[k].value;
-			player->hand[i].suits = deck[k].suits;
-
-
-			deck[k].value = EMPTY_FIELD;
-			deck[k].suits = EMPTY_FIELD;
 		}
 				 
  } 
+
+
 
 void init_field(struct Card_properties field [][MAX_ATTACKS]) {
 
@@ -178,7 +185,7 @@ void hand_ausgabe(struct Player player) {
 		{
 			printf("CARD %i\t", j+1);
 	  		printf("VALUE.........:%i\t", player.hand[j].value );
-	  		printf("SUITS.......:%i\n",   player.hand[j].suits);
+	  		printf("SUITS.......:%i\n",   player.hand[j].suits );
 
 		}
 		

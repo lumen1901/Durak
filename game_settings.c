@@ -25,6 +25,7 @@ int check_players() {
 		
 		else {
 			printf("Wrong input!\n");
+			return -1;
 		}
 
 	}while(exit != true);
@@ -55,19 +56,19 @@ void set_trump (struct Card_properties *deck) {
 	switch(trump) {
 
 		case 1: 
-		printf("Trump will be spades\n");
+		printf("♠ is trump \n");
 		break;
 
 		case 2:
-		printf("Trump will be hearts\n");
+		printf("♥ is trump\n");
 		break;
 
 		case 3:
-		printf("Trump will be diamonds\n");
+		printf("♦ is trump\n");
 		break;
 
 		case 4:
-		printf("Trump will be clubs\n");
+		printf("♣ is trump\n");
 		break;
 	}
  }
@@ -108,6 +109,7 @@ int choose_card(){
 		else {
 
 			printf("Choose from hand pls.\n");
+			return -1;
 		}
 
 	 }while(exit != true);
@@ -124,21 +126,21 @@ void set_turn(struct Player *players, int num_of_players) {
 
  }
 
-void play_card(struct Player player, struct Card_properties field[][MAX_ATTACKS]){
+void play_card(struct Player *player, struct Card_properties field[][MAX_ATTACKS]){
 
 	int index = choose_card();
 
-	int action = player.mode;
+	int action = player->mode;
 
 		for (int i = 0; i < MAX_ATTACKS; i++)
 		{
 			if (field[action][i].value == EMPTY_FIELD && field[action][i].suits == EMPTY_FIELD )
 			{
-				field[action][i].value = player.hand[index].value;
-				field[action][i].suits = player.hand[index].suits;
+				field[action][i].value = player->hand[index].value;
+				field[action][i].suits = player->hand[index].suits;
 
-				player.hand[i].value = EMPTY_FIELD;
-				player.hand[i].suits = EMPTY_FIELD;
+				player->hand[index].value = EMPTY_FIELD;
+				player->hand[index].suits = EMPTY_FIELD;
 
 
 				break;
@@ -160,8 +162,51 @@ int hand_empty(struct Player player){
 
 	}
 
+return -1;
+}
+
+int zero_pos(struct Player player){
+
+	for (int i = 0; i < MAX_CARDS; i++)
+	{
+		if (player.hand[i].value != 0 && player.hand[i].suits != 0)
+		{
+			return i;
+		}
+		else
+			printf("\n");
+			return -1;
+	}
+
+return -1;
+ }
+
+void check_cards(int num_of_players, struct Player player, struct Card_properties *deck) {	//does not work yet
+
+	for (int i = 0; i < num_of_players; i++)
+	{
+		for (int j = 0; j < MAX_CARDS; j++)
+		{					
+			cards2hand(deck,&player);
+		}
+						
+	}
+
+ } 
+
+void num2sym(int number) {
+
+if (number == 1)
+{
+	number = ' ';
+}
+
+
+
 
 }
+
+
 
 
 

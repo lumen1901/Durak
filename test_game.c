@@ -98,47 +98,75 @@ int main(int argc, char const *argv[]) {
 				set_trump(deck);
 				init_field(field);
 
-				
-
-				do {
-
-					set_turn(players_num, num_of_players);
+				set_turn(players_num, num_of_players);
 
 					hand_ausgabe(players_num[0]);
 					hand_ausgabe(players_num[1]);
 
 
-					play_card(players_num[i],field);
-					play_card(players_num[i+1],field);
+					play_card(&players_num[i],field);
 
 					ausgabe_field(field);
-
-
-
-					i++;
+					hand_ausgabe(players_num[0]);
 
 					for (int i = 0; i < num_of_players; i++)
 					{
 						for (int j = 0; j < MAX_CARDS; j++)
-						{
-							
-							if (players_num[i].hand[j].value == 0 && players_num[i].hand[j].suits == 0 )
-							{
+						{					
 								cards2hand(deck,&players_num[i]);
-
-							}
-
 						}
 						
 					}
 
+					// check_cards(num_of_players, *players_num, deck);
+					hand_ausgabe(players_num[0]);
 
-					if (i == num_of_players)
-					{
-						i = 0;
-					}
+			
 
-				}while(hand_empty(players_num[0])!=0);		// muss noch geschrieben werden!!
+				// do {
+
+				// 	set_turn(players_num, num_of_players);
+
+				// 	hand_ausgabe(players_num[0]);
+				// 	hand_ausgabe(players_num[1]);
+
+
+				// 	play_card(&players_num[i],field);
+
+				// 	hand_ausgabe(players_num[0]);
+
+				// 	// play_card(players_num[i+1],field);
+
+				// 	// ausgabe_field(field);
+
+
+
+				// 	i++;
+
+				// 	for (int i = 0; i < num_of_players; i++)
+				// 	{
+				// 		for (int j = 0; j < MAX_CARDS; j++)
+				// 		{
+							
+				// 			if (players_num[i].hand[j].value == 0 && players_num[i].hand[j].suits == 0 )
+				// 			{
+				// 				cards2hand(deck,&players_num[i]);
+				// 				hand_ausgabe(players_num[0]);
+
+
+				// 			}
+
+				// 		}
+						
+				// 	}
+
+
+				// 	if (i == num_of_players)
+				// 	{
+				// 		i = 0;
+				// 	}
+
+				// }while(hand_empty(players_num[0])!=0);		// muss noch geschrieben werden!!
 
 				
 				break;
