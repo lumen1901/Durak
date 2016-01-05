@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
 	FILE *data = NULL;
 
 	do {
-
+		 printf("\n");
 		 printf("  ****************************************************************************** \n");
 		 printf("  * * * * * *                                                        * * * * * * \n");
 		 printf("                                   									          \n");
@@ -40,7 +40,7 @@ int main(int argc, char const *argv[]) {
  		 printf("                                      *****                                      \n");
   		 printf("                                                                                 \n");
 		 printf("                                                                                 \n");
-		 printf("        [1] RULES 	   [2] PLAY 	  [3] QUIT 	   [4] CREDITS                    \n");
+		 printf("        [1] RULES 	   [2] PLAY 	  [3] CREDITS 	   [4] QUIT                   \n");
 		 printf("                                                                                 \n");
 		 printf("           			                                                          \n");
 		 printf("           			                                                          \n");
@@ -171,9 +171,37 @@ int main(int argc, char const *argv[]) {
 				
 				break;
 
-			case 3:
+			//case 3:	Tobias
 
-				printf("до свидания!\n");
+			case 4:
+				printf("\n");
+				printf("  ******************************************************************************\n");
+		 		printf("  * * * * * *                                                        * * * * * *\n");
+				printf("                                   									            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("                                                                                \n");
+ 		 		printf("                                                                                \n");
+  		 		printf("                                                                                \n");
+		 		printf("                                                                                \n");
+		 		printf("                                  до свидания!                                  \n");
+		 		printf("                                                                                \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("                                                                         	    \n");
+		 		printf("                                                                                \n");
+		 		printf("  ******************************************************************************\n");
+		 		printf("\n");
+
+
 				exit = true;
 
 				break;
