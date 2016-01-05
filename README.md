@@ -1,6 +1,6 @@
 # Durak
 
-## rules
+## Q&A
 
 With How Many Cards Do I Play With?
 Reduced poker deck with 36 cards from 6 to Ace.
