@@ -16,6 +16,8 @@
 
   #define EMPTY_FIELD 0
 
+
+
  
  enum values{ SIX = 6, SEVEN, EIGHT, NINE, TEN, JOKER, QUEEN, KING, ACE };
 

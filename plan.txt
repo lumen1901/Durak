@@ -1,0 +1,4 @@
+- checkcards funktion schreiben
+- rundendurchlauf mit modulo schreiben
+- erste runde ermitteln mit trumpfcheck
+- headerfile "cards.h" erstellen 

@@ -61,6 +61,7 @@ int main(int argc, char const *argv[]) {
 
 		 switch(choice) {
 
+		 	case 0:
 
 			case 1:
 				
@@ -95,24 +96,28 @@ int main(int argc, char const *argv[]) {
 					cards2hand(deck,&players_num[i]);
 				}
 
-				set_trump(deck);
+				int trump;
+
+				printf("TRUMPCHECK%i\n",trumpcheck(players_num[0],set_trump(deck)) );
+				
 				init_field(field);
 
 				set_turn(players_num, num_of_players);
 
 					hand_ausgabe(players_num[0]);
-					hand_ausgabe(players_num[1]);
 
+					play_card(&players_num[0],field);
 
-					play_card(&players_num[i],field);
-
+					printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
+					
 					ausgabe_field(field);
 					hand_ausgabe(players_num[0]);
 
 					for (int i = 0; i < num_of_players; i++)
 					{
 						for (int j = 0; j < MAX_CARDS; j++)
-						{					
+						{
+							
 								cards2hand(deck,&players_num[i]);
 						}
 						

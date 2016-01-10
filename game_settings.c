@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <wchar.h>
 
 #include "init_durak.h"
 #include "game_settings.h"
@@ -15,14 +16,14 @@ int check_players() {
 
 		printf("How many players are in the game?\n");
 
-		scanf("%i",&players);		
+		scanf("%i",&players);
 
 		if (players < 6 && players > 0)
 		{
 			exit = true;
 			return players;
 		}
-		
+
 		else {
 			printf("Wrong input!\n");
 			return -1;
@@ -46,16 +47,16 @@ int find_top(struct Card_properties *deck) {
 int find_bottom() {
 
 	return MAX_CARDS-1;
- } 
+ }
 
-void set_trump (struct Card_properties *deck) {
+int set_trump (struct Card_properties *deck) {
 
 	int position = find_bottom();
 	int trump = deck[position].suits;
 
 	switch(trump) {
 
-		case 1: 
+		case 1:
 		printf("♠ is trump \n");
 		break;
 
@@ -71,6 +72,7 @@ void set_trump (struct Card_properties *deck) {
 		printf("♣ is trump\n");
 		break;
 	}
+	return trump;
  }
 
 int count_wins(struct Player player) {
@@ -119,9 +121,8 @@ void set_turn(struct Player *players, int num_of_players) {
 
 	// Spieler, der den niedrigsten Trumpf auf der Hand hat
 
-	players->mode = MODE_ATTACK; 
+	players->mode = MODE_ATTACK;
 	(players+1)->mode = MODE_DEFEND;
-		
 
 
  }
@@ -157,7 +158,7 @@ int hand_empty(struct Player player){
 		{
 			return 1;
 		}
-		else 
+		else
 			return 0;
 
 	}
@@ -181,32 +182,80 @@ int zero_pos(struct Player player){
 return -1;
  }
 
-void check_cards(int num_of_players, struct Player player, struct Card_properties *deck) {	//does not work yet
+int check_cards(int num_of_players, struct Player player, struct Card_properties *deck) {
 
-	for (int i = 0; i < num_of_players; i++)
-	{
-		for (int j = 0; j < MAX_CARDS; j++)
-		{					
-			cards2hand(deck,&player);
+	int how_much_cards = 0;
+
+		for (int j = 0; j < MAX_HAND; j++)
+		{
+			if (player.hand[j].value == 0)
+			{
+				how_much_cards ++;
+			}
+
 		}
-						
+
+
+
+	return how_much_cards;
+
+ }
+
+int first_player(struct Player *player, int trump, int num_of_players) {
+
+	int a, a_old;
+
+	for (int i = 0; i < num_of_players; i++) {
+
+		for (int j = 0; j < MAX_CARDS; j++) {
+
+
+			if (if player[i].hand[j].suits == trump && player[i].hand[j].value <= a)
+			{
+
+				a_old = a;
+
+				if () {
+					/* code */
+				}
+
+			}
+
+		}
+
+
 	}
 
- } 
-
-void num2sym(int number) {
-
-if (number == 1)
-{
-	number = ' ';
-}
 
 
+// void num2sym(int number) {
+
+// 	if (number == 1)
+// 	{
+// 		return SPADES;
+
+// 	}
+
+// 	if (number == 2)
+// 	{
+// 		printf("\t\t♥");
+
+// 	}
+
+// 	if (number == 3)
+// 	{
+// 		printf("\t\t♦");
+
+// 	}
+
+// 	if (number == 4)
+// 	{
+// 		printf("\t\t♣");
+
+// 	}
+
+// }
 
 
-}
-
-
-
-
-
+// DEFINE für suits
+// modulo für ringe

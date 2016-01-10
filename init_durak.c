@@ -183,16 +183,58 @@ void hand_ausgabe(struct Player player) {
 
 		for (int j = 0; j < MAX_HAND; j++)
 		{
-			printf("CARD %i\t", j+1);
-	  		printf("VALUE.........:%i\t", player.hand[j].value );
-	  		printf("SUITS.......:%i\n",   player.hand[j].suits );
-
+			printf("CARD %i\t\t", j+1);
 		}
-		
 
-	
+		printf("\n");
+
+		for (int j = 0; j < MAX_HAND; j++)
+		{
+			printf("%i\t\t", player.hand[j].value );
+		}
+
+		printf("\n");
+
+		for (int j = 0; j < MAX_HAND; j++)
+		{
+			printf("%i\t\t", player.hand[j].suits );
+		}
+		printf("\n");
+
 
  }
+
+void hand_on_field(struct Player Player) {
+	
+	printf("\n");
+				printf("  ******************************************************************************\n");
+		 		printf("  * * * * * *                                                        * * * * * *\n");
+				printf("                                   									            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("                                                                                \n");
+ 		 		printf("                                                                                \n");
+  		 		printf("                                                                                \n");
+		 		printf("                                                                                \n");
+		 		printf("                                  до свидания!                                  \n");
+		 		printf("                                                                                \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("           			                                                            \n");
+		 		printf("                                                                         	    \n");
+		 		printf("                                                                                \n");
+		 		printf("  ******************************************************************************\n");
+		 		printf("\n");
+
+
+}
 
 void deck_ausgabe(struct Card_properties *deck) {
 
