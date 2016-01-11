@@ -1,4 +1,8 @@
-- checkcards funktion schreiben
+- checkcards funktion schreiben x
+- reihenfolge des Spiels ermitteln und Modi setzen x
+- Reihenfolge ordnen
+- Namen eingeben x
 - rundendurchlauf mit modulo schreiben
-- erste runde ermitteln mit trumpfcheck
-- headerfile "cards.h" erstellen 
+- erste runde ermitteln mit firstplayer x
+- headerfile "cards.h" erstellen
+- setturn schreiben

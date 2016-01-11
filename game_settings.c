@@ -14,11 +14,38 @@ int check_players() {
 
 	do {
 
-		printf("How many players are in the game?\n");
+		printf("\n");
+		printf("  ******************************************************************************\n");
+		printf("  * * * * * *                                                        * * * * * *\n");
+		printf("                                   									            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                        How many players are in the game?         				\n");
+		printf("                               [2] 2 players                                    \n");
+		printf("                               [3] 3 players                                    \n");
+		printf("                               [4] 4 players                                    \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("                                                                         	    \n");
+		printf("                                                                                \n");
+		printf("  ******************************************************************************\n");
 
+		printf("Make your choice: " );
 		scanf("%i",&players);
+		printf("\n");
 
-		if (players < 6 && players > 0)
+
+		if (players < 5 && players >= 2)
 		{
 			exit = true;
 			return players;
@@ -117,15 +144,63 @@ int choose_card(){
 	 }while(exit != true);
  }
 
-void set_turn(struct Player *players, int num_of_players) {
+void set_turn(struct Player *players, int num_of_players, int firstplayer) {
 
 	// Spieler, der den niedrigsten Trumpf auf der Hand hat
 
-	players->mode = MODE_ATTACK;
-	(players+1)->mode = MODE_DEFEND;
+	for (int i = 0; i < num_of_players ;i++)
+	{
+		players[i].mode = MODE_PASSIVE;
 
+		if (i == (firstplayer-1)) {
+
+			players[i].mode = MODE_ATTACK;
+
+			if (i == num_of_players-1) {
+				players[0].mode = MODE_DEFEND;
+			}
+
+		}
+		if (i == firstplayer) {
+
+			players[i].mode = MODE_DEFEND;
+		}
+
+
+
+	}
+
+	for (int i = 0; i<num_of_players;i++) {
+		printf("Modus %s %i\n",players[i].name,players[i].mode );
+	}
 
  }
+
+void set_queue(struct Player *player,int num_of_players) {
+
+	struct Player temp[num_of_players];
+
+	for(int i = 0; i < num_of_players; i++) {
+
+		temp[i] = player[i];
+
+	}
+
+	for(int i = 0; i < num_of_players; i++) {
+
+		temp[i]=player[i];
+
+		if (temp[i].mode == MODE_ATTACK) {
+
+			player[0] = temp[i];
+		}
+
+		if (temp[i].mode == MODE_DEFEND) {
+			player[1] = temp[i];
+		}
+	}
+
+}
 
 void play_card(struct Player *player, struct Card_properties field[][MAX_ATTACKS]){
 
@@ -203,28 +278,53 @@ int check_cards(int num_of_players, struct Player player, struct Card_properties
 
 int first_player(struct Player *player, int trump, int num_of_players) {
 
-	int a, a_old;
 
-	for (int i = 0; i < num_of_players; i++) {
+	int min;
+	int first_player;
+	int i,j;
 
-		for (int j = 0; j < MAX_CARDS; j++) {
+	for ( i = 0; i < num_of_players; i++) {		//locate first trump
 
+		for ( j = 0; j < MAX_CARDS; j++) {
 
-			if (if player[i].hand[j].suits == trump && player[i].hand[j].value <= a)
-			{
+			if (player[i].hand[j].suits == trump) {
 
-				a_old = a;
+				min = player[i].hand[j].value;
+				first_player = (i+1);
 
-				if () {
-					/* code */
-				}
+				break;
 
 			}
 
 		}
 
+	if (player[i].hand[j].suits == trump) {break;}
 
 	}
+
+	if (first_player == 0)
+	{
+		printf("There are no trumps in your hands!\n");
+		first_player = 1;
+	}
+
+
+
+	for (int i = 0; i < num_of_players; i++) {		// locate smallest trump
+
+		for (int j = 0; j < MAX_CARDS; j++) {
+
+			if (player[i].hand[j].suits == trump && player[i].hand[j].value < min) {
+
+				min = player[i].hand[j].value;
+				first_player = (i+1);
+			}
+		}
+	}
+
+	return first_player;
+
+}
 
 
 

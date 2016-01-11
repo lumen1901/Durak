@@ -1,6 +1,6 @@
 
 #ifndef INIT_DURAK_H
-  
+
   #define INIT_DURAK_H
 
   #define MAX_CARDS 36
@@ -18,11 +18,11 @@
 
 
 
- 
+
  enum values{ SIX = 6, SEVEN, EIGHT, NINE, TEN, JOKER, QUEEN, KING, ACE };
 
  enum suits{ SPADES = 1, HEARTS, DIAMONDS, CLUBS };
- 
+
 
  struct Card_properties  {
 
@@ -33,13 +33,14 @@
 
  struct Player {
 
+    char name[20];
 	int wins;
 	int looses;
 	int mode;
 
 	struct Card_properties hand[MAX_CARDS];
  };
- 
+
  void init_cards (struct Card_properties *deck);
  void swap(struct Card_properties *eintrag1, struct Card_properties *eintrag2);
  void randomize ( struct Card_properties *arr, int n );
@@ -48,6 +49,6 @@
  void deck_ausgabe(struct Card_properties *deck);
  void init_field(struct Card_properties field [][MAX_ATTACKS]);
  void ausgabe_field(struct Card_properties field [][MAX_ATTACKS]);
+ void ask_names(struct Player *player, int num_of_players);
 
  #endif /* INIT_DURAK_H */
-
