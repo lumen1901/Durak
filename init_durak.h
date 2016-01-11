@@ -50,5 +50,6 @@
  void init_field(struct Card_properties field [][MAX_ATTACKS]);
  void ausgabe_field(struct Card_properties field [][MAX_ATTACKS]);
  void ask_names(struct Player *player, int num_of_players);
+  void bubblesort(struct Player *player, int num_of_players);
 
  #endif /* INIT_DURAK_H */

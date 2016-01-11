@@ -112,6 +112,25 @@ void randomize ( struct Card_properties *arr, int n )
     }
  }
 
+ void bubblesort(struct Player *player, int num_of_players)
+ {
+     int i, j;
+	 struct Player tmp;
+
+     for (i = 0; i < num_of_players - 1; ++i)
+     {
+	 	for (j = 0; j < num_of_players - i - 1; ++j)
+        {
+	 	    if (player[j].mode > player[j + 1].mode)
+	            {
+		 		tmp = player[j];
+		 		player[j] = player[j + 1];
+		 		player[j + 1] = tmp;
+ 	    	}
+ 		}
+     }
+ }
+
 
  void cards2hand(struct Card_properties *deck, struct Player *player) {
 

@@ -102,32 +102,41 @@ int main(int argc, char const *argv[]) {
 				set_turn(players_num, num_of_players, firstplayer);
 
 
-					for (int i = 0; i< num_of_players; i++) {
+				for (int i = 0; i< num_of_players; i++) {
 
-						printf("\n");
-						printf("%s\n",players_num[i].name );
-						hand_ausgabe(players_num[i]);
-					}
+					printf("\n");
+					printf("%s\n",players_num[i].name );
+					hand_ausgabe(players_num[i]);
+				}
 
-					play_card(&players_num[0],field);
+				bubblesort(players_num, num_of_players);
 
-					printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
+				printf("right order:\n");
+				for (int i = 0; i < num_of_players; i++) {
+					printf("%s\n",players_num[i].name);
+				}
 
-					ausgabe_field(field);
-					hand_ausgabe(players_num[0]);
 
-					for (int i = 0; i < num_of_players; i++)
-					{
-						for (int j = 0; j < MAX_CARDS; j++)
+
+				interaction(&players_num[0],&players_num[1], field);
+
+						printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
+
+						ausgabe_field(field);
+						hand_ausgabe(players_num[0]);
+
+						for (int i = 0; i < num_of_players; i++)
 						{
+							for (int j = 0; j < MAX_CARDS; j++)
+							{
 
-								cards2hand(deck,&players_num[i]);
+									cards2hand(deck,&players_num[i]);
+							}
+
 						}
 
-					}
-
-					// check_cards(num_of_players, *players_num, deck);
-					hand_ausgabe(players_num[0]);
+						// check_cards(num_of_players, *players_num, deck);
+						hand_ausgabe(players_num[0]);
 
 
 				break;

@@ -176,31 +176,6 @@ void set_turn(struct Player *players, int num_of_players, int firstplayer) {
 
  }
 
-void set_queue(struct Player *player,int num_of_players) {
-
-	struct Player temp[num_of_players];
-
-	for(int i = 0; i < num_of_players; i++) {
-
-		temp[i] = player[i];
-
-	}
-
-	for(int i = 0; i < num_of_players; i++) {
-
-		temp[i]=player[i];
-
-		if (temp[i].mode == MODE_ATTACK) {
-
-			player[0] = temp[i];
-		}
-
-		if (temp[i].mode == MODE_DEFEND) {
-			player[1] = temp[i];
-		}
-	}
-
-}
 
 void play_card(struct Player *player, struct Card_properties field[][MAX_ATTACKS]){
 
@@ -217,7 +192,6 @@ void play_card(struct Player *player, struct Card_properties field[][MAX_ATTACKS
 
 				player->hand[index].value = EMPTY_FIELD;
 				player->hand[index].suits = EMPTY_FIELD;
-
 
 				break;
 			}
@@ -326,36 +300,143 @@ int first_player(struct Player *player, int trump, int num_of_players) {
 
 }
 
+void interaction(struct Player *player1, struct Player *player2, struct Card_properties field[][MAX_ATTACKS]) {
+
+	int choice, choice2;
+	bool finish = false;
+
+	printf("\n");
+	printf("  ******************************************************************************\n");
+	printf("  * * * * * *                                                        * * * * * *\n");
+	printf("                                   									            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("                                                                                \n");
+	printf("                                                                                \n");
+	printf("                                                                                \n");
+	printf("                                                                                \n");
+	printf("                           What do you want to do now?         				    \n");
+	printf("                               [1] Play a card                                  \n");
+	printf("                               [2] Finish the attack                            \n");
+	printf("                               				                                    \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("           			                                                            \n");
+	printf("                                                                         	    \n");
+	printf("                                                                                \n");
+	printf("  ******************************************************************************\n");
 
 
-// void num2sym(int number) {
 
-// 	if (number == 1)
-// 	{
-// 		return SPADES;
-
-// 	}
-
-// 	if (number == 2)
-// 	{
-// 		printf("\t\t♥");
-
-// 	}
-
-// 	if (number == 3)
-// 	{
-// 		printf("\t\t♦");
-
-// 	}
-
-// 	if (number == 4)
-// 	{
-// 		printf("\t\t♣");
-
-// 	}
-
-// }
+	do {
 
 
-// DEFINE für suits
-// modulo für ringe
+
+		scanf("%i", &choice);
+		switch(choice) {
+
+			case 1:
+			hand_ausgabe(*player1);
+			play_card(player1,field);
+			ausgabe_field(field);
+
+			printf("\n");
+			printf("  ******************************************************************************\n");
+			printf("  * * * * * *                                                        * * * * * *\n");
+			printf("                                   									            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("                                                                                \n");
+			printf("                                                                                \n");
+			printf("                                                                                \n");
+			printf("                                                                                \n");
+			printf("                           		Time to defend!			       				    \n");
+			printf("                               [1] Play a card                                  \n");
+			printf("                               [2] Take cards to hand                           \n");
+			printf("                               				                                    \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("           			                                                            \n");
+			printf("                                                                         	    \n");
+			printf("                                                                                \n");
+			printf("  ******************************************************************************\n");
+
+			scanf("%i", &choice2);
+			switch (choice2) {
+
+
+					case 1:
+					hand_ausgabe(*player2);
+					play_card(player2, field);
+					ausgabe_field(field);
+					break;
+
+					case 2:
+					break;
+
+
+
+			}
+			break;
+
+			case 2:
+
+			for (int i = 0; i < num_of_players; i++)
+			{
+				for (int j = 0; j < MAX_CARDS; j++)
+				{
+
+						cards2hand(deck,&players_num[i]);
+				}
+
+			}
+
+			finish = true;
+			break;
+		}
+
+		printf("\n");
+		printf("  ******************************************************************************\n");
+		printf("  * * * * * *                                                        * * * * * *\n");
+		printf("                                   									            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                                                                                \n");
+		printf("                           Well done, now choose again         				    \n");
+		printf("                               [1] Play a card                                  \n");
+		printf("                               [2] Finish the attack                            \n");
+		printf("                               				                                    \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("           			                                                            \n");
+		printf("                                                                         	    \n");
+		printf("                                                                                \n");
+		printf("  ******************************************************************************\n");
+
+
+		}while (finish != true);
+
+
+
+
+
+
+}

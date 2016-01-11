@@ -1,8 +1,24 @@
 - checkcards funktion schreiben x
 - reihenfolge des Spiels ermitteln und Modi setzen x
-- Reihenfolge ordnen
+- Reihenfolge ordnen x
 - Namen eingeben x
+- playcard modifizieren: Auswahl(quit oder play more)
+- takecard
 - rundendurchlauf mit modulo schreiben
 - erste runde ermitteln mit firstplayer x
 - headerfile "cards.h" erstellen
-- setturn schreiben
+- setturn schreiben x
+
+
+Tasks:
+
+Tobias:
+
+Bitte schreib :
+- die takecard funktion, wenn ein Spieler nicht verteidigen kann, oder aufnehmen möchte.
+- Speichern von Spielern (nach Namen frage ich schon, die kannste du benutzen)
+
+
+Faraz:
+
+Es wäre cool, wenn du die großen printf-Fenster zu einer kleinen Funktion verpackst, damit das im code nicht so hässlich ist
