@@ -119,7 +119,7 @@ int main(int argc, char const *argv[]) {
 				int counter = 0;
 
 
-				while(deck_empty(deck) != 1) {
+				while(deck_empty(deck) != 0) {
 
 					interaction(&players_num[counter%num_of_players],&players_num[(counter+1)%num_of_players], field, deck, num_of_players);
 
@@ -127,23 +127,23 @@ int main(int argc, char const *argv[]) {
 
 				}
 
-						printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
-
-						ausgabe_field(field);
-						hand_ausgabe(players_num[0]);
-
-						for (int i = 0; i < num_of_players; i++)
-						{
-							for (int j = 0; j < MAX_CARDS; j++)
-							{
-
-									cards2hand(deck,&players_num[i]);
-							}
-
-						}
-
-						// check_cards(num_of_players, *players_num, deck);
-						hand_ausgabe(players_num[0]);
+						// printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
+						//
+						// ausgabe_field(field);
+						// hand_ausgabe(players_num[0]);
+						//
+						// for (int i = 0; i < num_of_players; i++)
+						// {
+						// 	for (int j = 0; j < MAX_CARDS; j++)
+						// 	{
+						//
+						// 			cards2hand(deck,&players_num[i]);
+						// 	}
+						//
+						// }
+						//
+						// // check_cards(num_of_players, *players_num, deck);
+						// hand_ausgabe(players_num[0]);
 
 
 				break;

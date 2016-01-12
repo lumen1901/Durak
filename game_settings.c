@@ -185,10 +185,25 @@ void play_card(struct Player *player, struct Card_properties field[][MAX_ATTACKS
 
 		for (int i = 0; i < MAX_ATTACKS; i++)
 		{
-			if (field[action][i].value == EMPTY_FIELD && field[action][i].suits == EMPTY_FIELD )
+			if (check_draw(player->hand[index], field) == -1) {
+
+				i--;
+
+				if (player->mode == 0) {
+					player->mode = 1;
+				}
+				if (player->mode == 1) {
+					player->mode = 0;
+				}
+			}
+
+			if (field[action][i].value == EMPTY_FIELD && field[action][i].suits == EMPTY_FIELD && check_draw(player->hand[index], field) == 0 )
 			{
+
+
 				field[action][i].value = player->hand[index].value;
 				field[action][i].suits = player->hand[index].suits;
+
 
 				player->hand[index].value = EMPTY_FIELD;
 				player->hand[index].suits = EMPTY_FIELD;
@@ -382,10 +397,22 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 					case 1:
 					hand_ausgabe(*player2);
 					play_card(player2, field);
+
+					for (int i = 0; i < MAX_ATTACKS; i++) {
+
+						if (field[0][i].value != 0 && field[1][i].value != 0 && check_beat(field[0][i],field[1][i]) == 1)
+						{
+							printf("Card %i is beaten!\n",i);
+
+						}
+
+					}
+
+
+
 					ausgabe_field(field);
 
 
-					break;
 
 					case 2:
 					break;
@@ -460,10 +487,9 @@ int deck_empty(struct Card_properties *deck){
 		{
 			return 1;
 		}
-		else
-			return 0;
 
 	}
+	return 0;
 }
 
 int cards_on_field(struct Card_properties field[][MAX_ATTACKS]) {
@@ -494,12 +520,63 @@ void clean_field(struct Card_properties field[][MAX_ATTACKS]) {
 
 		for (int j = 0; j < MAX_ATTACKS; j++ ) {
 
-			field[i][j].value != EMPTY_FIELD;
-			field[i][j].suits != EMPTY_FIELD;
-			
+			field[i][j].value = EMPTY_FIELD;
+			field[i][j].suits = EMPTY_FIELD;
+
 		}
 
 	}
 
+
+}
+
+int check_draw(struct Card_properties card, struct Card_properties field[][MAX_ATTACKS]) {
+
+	// case 1:
+
+	if (cards_on_field(field) == 0) {
+		return 0;
+	}
+
+	// case 2:
+
+	if (cards_on_field(field) == 1) {
+
+		if (field[0][0].suits == card.suits) {
+			return 0;
+		}
+		else
+			printf("Wrong suit!\n");
+			return -1;
+	}
+
+	// case 3:
+
+	else
+	{
+		for (int i = 0; i < INTERACTION; i++) {
+			for (int j = 0; j < MAX_ATTACKS; j++) {
+
+				if (field[i][j].value == card.value) {
+					return 0;
+				}
+
+
+			}
+		}
+
+		return -1;
+
+	}
+}
+
+int check_beat(struct Card_properties card1,struct Card_properties card2) {
+
+
+	if (card1.value > card2.value && card1.suits == card2.suits) {
+		return 1;
+	}
+	else
+		return 0;
 
 }

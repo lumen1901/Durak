@@ -8,8 +8,9 @@
 - erste runde ermitteln mit firstplayer x
 - headerfile "cards.h" erstellen
 - setturn schreiben x
-- clean field
-- checkwin
+- clean field x
+- checkwin x
+- check draw 
 
 
 Tasks:
