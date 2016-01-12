@@ -4,10 +4,12 @@
 - Namen eingeben x
 - playcard modifizieren: Auswahl(quit oder play more)
 - takecard
-- rundendurchlauf mit modulo schreiben
+- rundendurchlauf mit modulo schreiben x
 - erste runde ermitteln mit firstplayer x
 - headerfile "cards.h" erstellen
 - setturn schreiben x
+- clean field
+- checkwin
 
 
 Tasks:
@@ -21,4 +23,5 @@ Bitte schreib :
 
 Faraz:
 
-Es wäre cool, wenn du die großen printf-Fenster zu einer kleinen Funktion verpackst, damit das im code nicht so hässlich ist
+- Es wäre cool, wenn du die großen printf-Fenster zu einer kleinen Funktion verpackst, damit das im code nicht so hässlich ist
+- wide char printen und an eine funktion übergeben

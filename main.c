@@ -116,9 +116,16 @@ int main(int argc, char const *argv[]) {
 					printf("%s\n",players_num[i].name);
 				}
 
+				int counter = 0;
 
 
-				interaction(&players_num[0],&players_num[1], field);
+				while(deck_empty(deck) != 1) {
+
+					interaction(&players_num[counter%num_of_players],&players_num[(counter+1)%num_of_players], field, deck, num_of_players);
+
+					counter++;
+
+				}
 
 						printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
 

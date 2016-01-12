@@ -1,0 +1,14 @@
+
+*.out
+
+cards.c
+
+cards.h
+
+game_init.c
+
+game_init.h
+
+test_game.c
+
+a.out

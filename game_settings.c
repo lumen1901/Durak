@@ -300,7 +300,7 @@ int first_player(struct Player *player, int trump, int num_of_players) {
 
 }
 
-void interaction(struct Player *player1, struct Player *player2, struct Card_properties field[][MAX_ATTACKS]) {
+void interaction(struct Player *player1, struct Player *player2, struct Card_properties field[][MAX_ATTACKS], struct Card_properties *deck, int num_of_players) {
 
 	int choice, choice2;
 	bool finish = false;
@@ -316,7 +316,7 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 	printf("                                                                                \n");
 	printf("                                                                                \n");
 	printf("                                                                                \n");
-	printf("                           What do you want to do now?         				    \n");
+	printf("                       What do you want to do now, %s?         					\n", player1->name);
 	printf("                               [1] Play a card                                  \n");
 	printf("                               [2] Finish the attack                            \n");
 	printf("                               				                                    \n");
@@ -335,6 +335,10 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 
 	do {
 
+		if (cards_on_field(field) == 2* MAX_ATTACKS ) {
+			printf("Field is full\n");
+			finish = true;
+		}
 
 
 		scanf("%i", &choice);
@@ -356,7 +360,7 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 			printf("                                                                                \n");
 			printf("                                                                                \n");
 			printf("                                                                                \n");
-			printf("                           		Time to defend!			       				    \n");
+			printf("                          Time to defend, %s!			       				    \n", player2->name);
 			printf("                               [1] Play a card                                  \n");
 			printf("                               [2] Take cards to hand                           \n");
 			printf("                               				                                    \n");
@@ -379,6 +383,8 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 					hand_ausgabe(*player2);
 					play_card(player2, field);
 					ausgabe_field(field);
+
+
 					break;
 
 					case 2:
@@ -387,16 +393,21 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 
 
 			}
+
+
 			break;
 
 			case 2:
 
+
+			printf("Take some new cards!\n");
 			for (int i = 0; i < num_of_players; i++)
 			{
 				for (int j = 0; j < MAX_CARDS; j++)
 				{
 
-						cards2hand(deck,&players_num[i]);
+						cards2hand(deck,player1);
+						cards2hand(deck,player2);
 				}
 
 			}
@@ -416,7 +427,7 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 		printf("                                                                                \n");
 		printf("                                                                                \n");
 		printf("                                                                                \n");
-		printf("                           Well done, now choose again         				    \n");
+		printf("                           Well done %s, now choose again         				\n", player1->name);
 		printf("                               [1] Play a card                                  \n");
 		printf("                               [2] Finish the attack                            \n");
 		printf("                               				                                    \n");
@@ -437,6 +448,58 @@ void interaction(struct Player *player1, struct Player *player2, struct Card_pro
 
 
 
+
+
+}
+
+int deck_empty(struct Card_properties *deck){
+
+	for (int i = 0; i < MAX_CARDS; i++)
+	{
+		if (deck[i].value != 0 && deck[i].suits != 0)
+		{
+			return 1;
+		}
+		else
+			return 0;
+
+	}
+}
+
+int cards_on_field(struct Card_properties field[][MAX_ATTACKS]) {
+
+	int cards = 0;
+
+	for (int i = 0; i < INTERACTION; i++) {
+
+		for (int j = 0; j < MAX_ATTACKS; j++ ) {
+
+			if (field[i][j].value != EMPTY_FIELD && field[i][j].suits != EMPTY_FIELD)
+			{
+					cards++;
+			}
+
+		}
+
+	}
+
+	return cards;
+
+
+}
+
+void clean_field(struct Card_properties field[][MAX_ATTACKS]) {
+
+	for (int i = 0; i < INTERACTION; i++) {
+
+		for (int j = 0; j < MAX_ATTACKS; j++ ) {
+
+			field[i][j].value != EMPTY_FIELD;
+			field[i][j].suits != EMPTY_FIELD;
+			
+		}
+
+	}
 
 
 }

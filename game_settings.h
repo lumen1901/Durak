@@ -1,6 +1,7 @@
 #ifndef GAME_SETTINGS_H
 
   #define GAME_SETTINGS_H
+  #define MIN(a,b) (((a)<(b))?(a):(b))
 
   int check_players();
   int find_top(struct Card_properties *deck);
@@ -17,6 +18,9 @@
   void num2sym(int number);
   int trumpcheck(struct Player player, int trump);
   int first_player(struct Player *player, int trump, int num_of_players);
-  void interaction(struct Player *player1, struct Player *player2, struct Card_properties field[][MAX_ATTACKS]);
+  void interaction(struct Player *player1, struct Player *player2, struct Card_properties field[][MAX_ATTACKS], struct Card_properties *deck, int num_of_players);
+  int deck_empty(struct Card_properties *deck);
+  int cards_on_field(struct Card_properties field[][MAX_ATTACKS]);
+  void clean_field(struct Card_properties field[][MAX_ATTACKS]);
 
  #endif /* GAME_SETTINGS_H */
