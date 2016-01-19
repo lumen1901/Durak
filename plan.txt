@@ -10,7 +10,16 @@
 - setturn schreiben x
 - clean field x
 - checkwin x
-- check draw 
+- check draw
+- display header einbinden
+
+
+GAME ROUTINE:
+
+- finish the attack (Im ersten Zug nicht möglich)
+- wrong turn (automatisch zur Kartenauswahl zurückkehren)
+- back to decision (in Kartenauswahl)
+
 
 
 Tasks:

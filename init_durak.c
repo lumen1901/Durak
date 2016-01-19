@@ -200,22 +200,23 @@ void ausgabe_field(struct Card_properties field [][MAX_ATTACKS]) {
 
 void hand_ausgabe(struct Player player) {
 
+	int cards_on_hand = count_cards(player);
 
-		for (int j = 0; j < MAX_HAND; j++)
+		for (int j = 0; j < cards_on_hand; j++)
 		{
 			printf("CARD %i\t\t", j+1);
 		}
 
 		printf("\n");
 
-		for (int j = 0; j < MAX_HAND; j++)
+		for (int j = 0; j < cards_on_hand; j++)
 		{
 			printf("%i\t\t", player.hand[j].value );
 		}
 
 		printf("\n");
 
-		for (int j = 0; j < MAX_HAND; j++)
+		for (int j = 0; j < cards_on_hand; j++)
 		{
 			printf("%i\t\t", player.hand[j].suits );
 		}

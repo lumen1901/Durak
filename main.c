@@ -5,6 +5,7 @@
 
 #include "init_durak.h"
 #include "game_settings.h"
+#include "display.h"
 
 
 
@@ -82,6 +83,10 @@ int main(int argc, char const *argv[]) {
 				players_num = malloc (num_of_players*sizeof(struct Player));
 				ask_names(players_num, num_of_players);
 
+				for (int i = 0; i < num_of_players; i++)
+				{
+					save_player(players_num[i]);
+				}
 
 				init_cards(deck);
 				randomize(deck, MAX_CARDS);
