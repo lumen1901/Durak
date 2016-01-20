@@ -2,36 +2,26 @@
 - reihenfolge des Spiels ermitteln und Modi setzen x
 - Reihenfolge ordnen x
 - Namen eingeben x
-- playcard modifizieren: Auswahl(quit oder play more)
-- takecard
+- takecard x
 - rundendurchlauf mit modulo schreiben x
 - erste runde ermitteln mit firstplayer x
-- headerfile "cards.h" erstellen
+- headerfile "cards.h" erstellen x
 - setturn schreiben x
 - clean field x
 - checkwin x
+- makefile x
+- finish the attack (Im ersten Zug nicht möglich) x
+- im game menü zeigen wieviele karten im Deck übrig sind x
+- back to decision (in Kartenauswahl) x
+
+
+- playcard modifizieren
 - check draw
-- display header einbinden
-
-
-GAME ROUTINE:
-
-- finish the attack (Im ersten Zug nicht möglich)
+- header einbinden
+- playcard rekonstruieren
+- w-chars einbinden
+- cards to hand funktioniert nicht richtig
 - wrong turn (automatisch zur Kartenauswahl zurückkehren)
-- back to decision (in Kartenauswahl)
-
-
-
-Tasks:
-
-Tobias:
-
-Bitte schreib :
-- die takecard funktion, wenn ein Spieler nicht verteidigen kann, oder aufnehmen möchte.
-- Speichern von Spielern (nach Namen frage ich schon, die kannste du benutzen)
-
-
-Faraz:
-
-- Es wäre cool, wenn du die großen printf-Fenster zu einer kleinen Funktion verpackst, damit das im code nicht so hässlich ist
-- wide char printen und an eine funktion übergeben
+- wenn takecards ausgeführt wurde, dann wird die reihenfolge nochmal geändert
+- hand ausgabe(0-Karten nicht ausdrucken!)
+- komischer absturz....

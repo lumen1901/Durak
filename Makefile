@@ -1,5 +1,5 @@
 CC = gcc
-CC_FLAGS = -lbsd -Wall -Wextra -std=c99
+CC_FLAGS = -Wall -Wextra -std=c99
 
 # temporary directories
 SRCDIR = src
@@ -8,11 +8,11 @@ BINDIR = bin
 IMGDIR = img
 
 # generate target name from enclosing folder
-TARGET = $(BINDIR)/$(shell basename `readlink -f .`)
+TARGET = $(BINDIR)/myprog.exe
 
 C_FILES = $(wildcard $(SRCDIR)/*.c)
 
-all: $(TARGET)
+all: run
 
 # notdir  	strip directory prefix
 # :.c=.o	replace suffix
@@ -26,4 +26,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	rm -rf $(OBJDIR) $(BINDIR) $(IMGDIR)
+
+run: $(TARGET)
+	./$(TARGET)
 

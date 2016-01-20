@@ -137,8 +137,12 @@ void randomize ( struct Card_properties *arr, int n )
 	int i, k;
 
 
-		for (i=zero_pos(*player),k=0;i < MAX_HAND; i++, k++)
+		for (i=zero_pos(*player),k=0;i < MAX_HAND; i++)
 		{
+			if (deck_empty(deck) == 0) {
+				continue;
+			}
+
 			if (deck[k].value == 0 && deck[k].suits == 0)
 			{
 				k++;
@@ -202,23 +206,35 @@ void hand_ausgabe(struct Player player) {
 
 	int cards_on_hand = count_cards(player);
 
+
 		for (int j = 0; j < cards_on_hand; j++)
 		{
+			if(player.hand[j].value != 0)
 			printf("CARD %i\t\t", j+1);
+
+			else {
+				j--;
+			}
+
 		}
 
 		printf("\n");
 
 		for (int j = 0; j < cards_on_hand; j++)
 		{
+			if(player.hand[j].value != 0) {
 			printf("%i\t\t", player.hand[j].value );
+			}
+
 		}
 
 		printf("\n");
 
 		for (int j = 0; j < cards_on_hand; j++)
 		{
+			if(player.hand[j].suits != 0) {
 			printf("%i\t\t", player.hand[j].suits );
+			}
 		}
 		printf("\n");
 

@@ -5,7 +5,6 @@
 
 #include "init_durak.h"
 #include "game_settings.h"
-#include "display.h"
 
 
 
@@ -22,6 +21,7 @@ int main(int argc, char const *argv[]) {
 
 
 	bool exit = false;
+	bool return2menu = false;
 	int i, temp;
 	int choice;
 	int num_of_players;
@@ -91,6 +91,7 @@ int main(int argc, char const *argv[]) {
 				init_cards(deck);
 				randomize(deck, MAX_CARDS);
 
+
 				for (int i = 0; i < num_of_players; i++)
 				{
 					cards2hand(deck,&players_num[i]);
@@ -123,32 +124,26 @@ int main(int argc, char const *argv[]) {
 
 				int counter = 0;
 
-
-				while(deck_empty(deck) != 0) {
+				while (return2menu = true) {
 
 					interaction(&players_num[counter%num_of_players],&players_num[(counter+1)%num_of_players], field, deck, num_of_players);
+					players_num[(counter+1)%num_of_players].mode = 0;
+					players_num[(counter)%num_of_players].mode = 1;
 
 					counter++;
 
+					for (int i = 0; i < num_of_players; i++) {
+
+						if (deck_empty(deck) == 0 && count_cards(players_num[i]) == 0) {
+							printf("%s has won the game!!\n",players_num[i].name);
+							return2menu = true;
+						}
+					}
+
+
+
 				}
 
-						// printf("%i cards needed\n",check_cards(num_of_players, players_num[0], deck) );
-						//
-						// ausgabe_field(field);
-						// hand_ausgabe(players_num[0]);
-						//
-						// for (int i = 0; i < num_of_players; i++)
-						// {
-						// 	for (int j = 0; j < MAX_CARDS; j++)
-						// 	{
-						//
-						// 			cards2hand(deck,&players_num[i]);
-						// 	}
-						//
-						// }
-						//
-						// // check_cards(num_of_players, *players_num, deck);
-						// hand_ausgabe(players_num[0]);
 
 
 				break;
@@ -194,56 +189,6 @@ int main(int argc, char const *argv[]) {
 	 } while (exit != true);
 
 	 fclose(data);
-
-
-
-
-
-
-	// /* initializing the game */
-
-	// init_cards(deck);
-
-	// cards2hand(deck, hand, num_of_players);
-
-	// set_trump(deck);
-
-	// init_field(field);
-
-
-
-
-	// ausgabe_field(field);		// nur zum anschauen
-
-	// // ask_age(player);
-
-	// // for (int i = 0; i < MAX_CARDS; i++)
-	// // {
-	// // 	printf("%i",i );
-	// // 	deck_ausgabe(deck+i);
-
-	// // }
-
-	// //hand_ausgabe(hand,num_of_players);	// nur zum anschauen
-	// int i;
-
-	// do {
-
-	// 	hand_ausgabe(hand,num_of_players);
-	// 	ausgabe_field(field);
-
-	// 	set_turn(player, num_of_players);
-	// 	play_card(hand,field,player+i);
-
-	// 	i++;
-
-	// }while((hand+i)->player->value != EMPTY_FIELD && (hand+i)->player->suits != EMPTY_FIELD);
-
-
- // //	ausgabe_field(field);
-
-
-
 
 
 

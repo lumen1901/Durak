@@ -21,7 +21,7 @@
   int deck_empty(struct Card_properties *deck);
   int cards_on_field(struct Card_properties field[][MAX_ATTACKS]);
   void clean_field(struct Card_properties field[][MAX_ATTACKS]);
-  int check_draw(struct Card_properties card, struct Card_properties field[][MAX_ATTACKS]);
+  int check_draw(struct Card_properties card,  struct Card_properties field[][MAX_ATTACKS]);
   int check_beat(struct Card_properties card1,struct Card_properties card2);
   int count_cards(struct Player player);
   void takecards(struct Player *player, struct Card_properties field [][MAX_ATTACKS]);
